@@ -1,0 +1,46 @@
+Resumo
+Você foi escolhido para codificar uma tela de cadastro de produtos (CRUD) que fará parte do módulo de administração de um e-commerce.
+Além disso deverá ser implementado uma API para que o cliente possa consumir os dados via integração.
+
+Segue abaixo as colunas do cadastro de produto:
+
+Produto - Campos
+ID - Identificador do Produto - UUID
+Código - Código apresentável ao usuário - Texto
+Descrição - Descrição do Produto - Texto
+Departamento - Lista de departamentos - Caixa de Seleção (Será consumido via GET da api criada)
+Preço - Preço do Produto - Decimal
+Status - Ativo / Inativo - True/False - Booleano
+Ações - Editar / Excluir - A exclusão é lógica e não física
+
+Requisitos
+- O sistema é composto por 2 microsserviços: Serviço Web (Angular Versão 6 ou superior) + Serviço Api (.NET CORE 5.0 ou versões superiores)
+- Banco de dados - PostgreSQL, MySQL ou Oracle - Todas as informações precisam ser persistidas no banco de dados escolhido
+- Para validar os conhecimentos em banco de dados, evitar utilizar o entity framework, utilizar comandos com querys explícitas.
+- O usuário após logar no sistema selecionará a opção "Produto" no menu "Cadastro" na barra de menus.
+- Tela deverá conter os métodos de inserir, alterar e excluir.
+- Sobre o serviço api, deverá possuir um action get e um action post para tabela de produtos, além de um get que devolverá a lista de departamentos (descrita abaixo) que será consumida pelo CRUD.
+- Departamentos:
+	* CÓDIGO: 010 | DESCRIÇÃO: BEBIDAS
+	* CÓDIGO: 020 | DESCRIÇÃO: CONGELADOS
+	* CÓDIGO: 030 | DESCRIÇÃO: LATICINIOS
+	* CÓDIGO: 040 | DESCRIÇÃO: VEGETAIS
+	
+- O fluxo de autenticação é opcional, o mesmo poderá ser mockado para andamento do projeto
+- O uso do swagger para validação dos endpoints e para a devida documentação é obrigatório
+
+Observações
+- Elaborar documento descrevendo o processo de instalação do sistema, com scripts e passo a passo caso necessite.
+- Layout a escolha do candidato
+- CRUD deverá conter a tela de listagem, junto com a tela de formulário de inserção/alteração
+
+Diferenciais
+- Desenho Arquitetural
+- Escrita de testes
+
+Critérios de Avaliação
+- Organização do projeto
+- Utilização de padrões arquiteturais
+- Clean Code
+- Ausência de crashs e bugs
+- Detalhes de UI

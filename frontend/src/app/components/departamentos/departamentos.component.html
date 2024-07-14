@@ -1,0 +1,54 @@
+<div class="m-5">
+  <div class="flex align-items-center justify-content-between">
+    <h2>Departamentos</h2>
+    <button pButton icon="pi pi-fw pi-plus" label="Adicionar" routerLink="new"></button>
+  </div>
+  <p-table
+    [value]="departamentos"
+    styleClass="p-datatable-striped"
+    [lazy]="true"
+    (onLazyLoad)="loadData()"
+    [loading]="loading"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Id</th>
+        <th>Codigo</th>
+        <th>Descricao</th>
+        <th>Ação</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-depart>
+      <tr>
+        <td>{{ depart.id }}</td>
+        <td>{{ depart.codigo }}</td>
+        <td>{{ depart.descricao }}</td>
+        <td>
+          <button
+            pButton
+            pRipple
+            type="button"
+            icon="pi pi-pen-to-square"
+            pTooltip="Editar"
+            routerLink={{depart.id}}
+            class="p-button p-component p-button-text p-button-icon-only"
+          ></button>
+          <button
+            pButton
+            pRipple
+            type="button"
+            icon="pi pi-trash"
+            pTooltip="Excluir"
+            (click)="deleteDepartamento(depart.id)"
+            class="p-button p-component p-button-text p-button-danger p-button-icon-only"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="flex align-items-center justify-content-end">
+        Total: {{ departamentos ? departamentos.length : 0 }} departamentos.
+      </div>
+    </ng-template>
+  </p-table>
+</div>

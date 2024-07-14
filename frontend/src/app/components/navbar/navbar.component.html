@@ -1,0 +1,13 @@
+<p-menubar [model]="items">
+  <ng-template pTemplate="start">
+    <a routerLink='/home'>
+      <img src="logo-maximatech.png" alt="Logo" >
+    </a>
+  </ng-template>
+  <ng-template pTemplate="item" let-item let-root="root">
+      <a pRipple class="flex align-items-center p-menuitem-link" routerLink={{item.routerLink}}>
+          <span [class]="item.icon"></span>
+          <span class="ml-2">{{ item.label }}</span>
+      </a>
+  </ng-template>
+</p-menubar>

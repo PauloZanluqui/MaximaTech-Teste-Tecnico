@@ -1,0 +1,60 @@
+<div class="m-5">
+  <div class="flex align-items-center justify-content-between">
+    <h2>Produtos</h2>
+    <button pButton icon="pi pi-fw pi-plus" label="Adicionar" routerLink="new"></button>
+  </div>
+  <p-table
+    [value]="produtos"
+    styleClass="p-datatable-striped"
+    [lazy]="true"
+    (onLazyLoad)="loadData()"
+    [loading]="loading"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Id</th>
+        <th>Codigo</th>
+        <th>Descricao</th>
+        <th>Departamento</th>
+        <th>Valor</th>
+        <th>Ativo</th>
+        <th>Ação</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-produto>
+      <tr>
+        <td>{{ produto.id }}</td>
+        <td>{{ produto.codigo }}</td>
+        <td>{{ produto.descricao }}</td>
+        <td>{{ produto.departamento.descricao }}</td>
+        <td>R$ {{ produto.preco.toLocaleString('PT', {minimumFractionDigits: 2}) }}</td>
+        <td><i class="pi" [ngClass]="{'true-icon pi-check-circle text-green-500': produto.status, 'false-icon pi-times-circle text-pink-500': !produto.status}"></i></td>
+        <td>
+          <button
+            pButton
+            pRipple
+            type="button"
+            icon="pi pi-pen-to-square"
+            pTooltip="Editar"
+            routerLink={{produto.id}}
+            class="p-button p-component p-button-text p-button-icon-only"
+          ></button>
+          <button
+            pButton
+            pRipple
+            type="button"
+            icon="pi pi-trash"
+            pTooltip="Excluir"
+            (click)="deleteProduto(produto.id)"
+            class="p-button p-component p-button-text p-button-danger p-button-icon-only"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="flex align-items-center justify-content-end">
+        Total: {{ produtos ? produtos.length : 0 }} produtos.
+      </div>
+    </ng-template>
+  </p-table>
+</div>

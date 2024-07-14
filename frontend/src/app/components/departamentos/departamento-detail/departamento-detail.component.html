@@ -1,0 +1,30 @@
+<div class="flex align-items-center justify-content-center mt-4 mb-6">
+  <p-toast position="bottom-right" />
+	<div class="col-6">
+		<div class="card p-fluid">
+      <h2 *ngIf="!departamento">Cadastrar departamento</h2>
+      <h2 *ngIf="departamento">Editar departamento</h2>
+      <form [formGroup]="formDepartamento">
+        <div class="field" *ngIf="departamento">
+          <label htmlFor="Id">Id</label>
+          <input pInputText id="Id" type="text" formControlName="id" />
+        </div>
+        <div class="field">
+          <label htmlFor="Codigo">Código</label>
+          <input pInputText id="Codigo" type="text" formControlName="codigo" />
+        </div>
+        <div class="field">
+          <label htmlFor="Descricao">Descrição</label>
+          <input pInputText id="Descricao" type="text" formControlName="descricao" />
+        </div>
+
+        <div class="flex align-items-center justify-content-center col-12 gap-2">
+          <button class="col-3 p-button-secondary" pButton label="Voltar" (click)="goToDepartamentos()"></button>
+          <button *ngIf="!departamento" class="col-3" pButton label="Criar" (click)="createDepartamento()"></button>
+          <button *ngIf="departamento" class="col-3" pButton label="Salvar Alterações" (click)="updateDepartamento()"></button>
+        </div>
+      </form>
+			
+		</div>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="flex align-items-center justify-content-center mt-4 mb-6">
+  <p-toast position="bottom-right" />
+	<div class="col-6">
+		<div class="card p-fluid">
+      <h2 *ngIf="!produto">Cadastrar produto</h2>
+      <h2 *ngIf="produto">Editar produto</h2>
+      <form [formGroup]="formProduto">
+        <div class="field" *ngIf="produto">
+          <label htmlFor="Id">Id</label>
+          <input pInputText id="Id" type="text" formControlName="id" />
+        </div>
+        <div class="field">
+          <label htmlFor="Codigo">Código</label>
+          <input pInputText id="Codigo" type="text" formControlName="codigo" />
+        </div>
+        <div class="field">
+          <label htmlFor="Descricao">Descrição</label>
+          <input pInputText id="Descricao" type="text" formControlName="descricao" />
+        </div>
+        <div class="field">
+          <label htmlFor="Descricao">Departamento</label>
+          <p-dropdown 
+            [options]="departamentosDropdown" 
+            formControlName="departamentoId" 
+            optionLabel="descricao" 
+            optionValue="id"
+            placeholder="Selecione um Departamento" />
+        </div>
+        <div class="field">
+          <label htmlFor="Descricao">Valor</label>
+          <p-inputNumber 
+            formControlName="preco" 
+            inputId="locale-pt" 
+            mode="decimal" 
+            locale="pt-BR" 
+            [minFractionDigits]="2" /> 
+        </div>
+        <div class="field">
+          <p>Ativo</p>
+          <p-inputSwitch formControlName="status" />
+        </div>
+
+        <div class="flex align-items-center justify-content-center col-12 gap-2">
+          <button class="col-3 p-button-secondary" pButton label="Voltar" (click)="goToProdutos()"></button>
+          <button *ngIf="!produto" class="col-3" pButton label="Criar" (click)="createProduto()"></button>
+          <button *ngIf="produto" class="col-3" pButton label="Salvar Alterações" (click)="updateProduto()"></button>
+        </div>
+      </form>
+			
+		</div>
+  </div>
+</div>
